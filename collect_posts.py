@@ -27,7 +27,8 @@ def get_post_data():
         post_id = post.get('id')
         post_likes_count = post.get('likes', {}).get('count')
         post_comments_count = post.get('comments', {}).get('count')
-        post_published = datetime.utcfromtimestamp(int(post.get('date'))) #преобразование даты и времени из используемого vk формата timestamp в UTC
+        post_time = int(post.get('date'))
+        post_published = datetime.fromtimestamp(post_time) #преобразование даты и времени из используемого vk формата timestamp в UTC
         post_text = post.get('text', 'No text')
         data = {
             'post_id': post_id,

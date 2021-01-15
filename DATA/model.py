@@ -11,7 +11,6 @@ class Post(db.Model):
     post_comments_count = db.Column(db.Integer, nullable=False)
     post_published = db.Column(db.DateTime, nullable=False)
     post_text = db.Column(db.Text, nullable=False)
-    #comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {} {}>'.format(self.post_id, self.post_likes_count)
@@ -19,7 +18,6 @@ class Post(db.Model):
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    #post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'))
     post_id = db.Column(db.Integer, nullable=False)
     comment_id = db.Column(db.Integer, nullable=False)
     comment_likes_count = db.Column(db.Integer, nullable=False)
