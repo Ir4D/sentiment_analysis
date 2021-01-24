@@ -71,10 +71,16 @@ def get_post_data():
 
 def save_post_data(post_id, post_likes_count, post_comments_count, post_published, post_text):
     new_post = Post(post_id=post_id, post_likes_count=post_likes_count, post_comments_count=post_comments_count, post_published=post_published, post_text=post_text)
-    db.session.add(new_post)
-    db.session.commit()
+    try:
+        db.session.add(new_post)
+        db.session.commit()
+    except:
+        pass
 
 def save_comment_data(post_id, comment_id, comment_likes_count, comment_text):
     new_comment = Comment(post_id=post_id, comment_id=comment_id, comment_likes_count=comment_likes_count, comment_text=comment_text)
-    db.session.add(new_comment)
-    db.session.commit()
+    try:
+        db.session.add(new_comment)
+        db.session.commit()
+    except:
+        pass
